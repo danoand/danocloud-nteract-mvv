@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Framework CSS -->
+<link rel="stylesheet" href="styles/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/nteract.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/print.css" type="text/css" media="print">
+<!--[if lt IE 8]><link rel="stylesheet" href="styles/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<script type="text/javascript" src="scripts/jquery.js" /></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.fn.clearsearch = function() {
+				return this.focus(function() {
+					if( this.value == this.defaultValue ) {
+						this.value = "";
+						$(this).removeClass('dimtext');					
+					}
+				}).blur(function() {
+					if( !this.value.length ) {
+						this.value = this.defaultValue;
+						$(this).addClass('dimtext');					
+					}
+				});
+			};
+	});
+</script>
+<title>nteract</title>
+</head>
+<body class="conversion"> <!-- set to conversion for in flow pages -->
+<div class="container" id="header">
+	<h1><a href="index.html">nteract.</a></h1>
+	<div class="fr mt">
+		Welcome Dan  |  <a href="#">Logout</a>
+	</div>
+</div>
+<div class="container">
+	<ul id="top-tabs">
+	<li><a id="dashboard" href="index.html" class="">DASHBOARD</a></li>
+	<li><a id="request" class="active">REQUEST</a></li>
+	<li><a id="promise" >PROMISE</a></li>
+	<li><a id="manage" >MANAGE</a></li>
+	<li><a id="identity">IDENTITY</a></li>
+	<li><a id="network" >NETWORK</a></li>
+</ul>
+	<div class="clear">&nbsp;</div>
+	<div class="span-16">
+		<h2 class="title fl">Request Name</h2>
+		<a href="#" class="h2-link">&raquo; Return to Dashboard</a>
+		<div class="span-16 last">
+			<div class="notice hide" id="counterMessage">Click the outlined area you would like to change for the counter</div>
+			<div class="clear clearfix mt tooltip" id="request-description">
+				<div class="span-4">
+					<label for="description">Description:</label>
+					<br/><span class="edited">edited</span>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here <a href="#">Nicole Smith</a> <em> 1/23/11 2:37pm</em>
+					</div>
+					<div class="edit hide">
+						<textarea type="text" name="description" id="description" class="text span-12 h-50 last" title="Description">A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here</textarea>
+					</div>
+					<div class="clear clearfix mt">
+						<div class="span-2 tr">
+							<small><strong>Edited:<br/></strong></small>
+						</div>
+						<div class="span-10 last grey-bg">
+							<div class="pad5">
+								<small>A bunch of edited text here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here <a href="#">Dan A.</a> <em> 1/22/11 6:35pm</em></small>
+							</div>
+						</div>
+					</div>
+					
+					<div class="clear clearfix mt">
+						<div class="span-2 tr">
+							<strong><small>Was:</small></strong>
+						</div>
+						<div class="span-10 last grey-bg">
+							<div class="pad5">
+								<small>Original Text here nch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here</small>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-files">
+				<div class="span-4">
+					<label for="attach-files3">Attach Files:</label>
+				</div>
+				<div class="span-12 last">
+					<div class="">
+						<div class="fl mr tc">
+							<img src="images/temp/screenshot1.jpg"/>
+							<br/><small>image1.jpg</small>
+						</div>
+						<div class="fl mr tc">
+							<img src="images/temp/screenshot1.jpg"/>
+							<br/><small>image1.jpg</small>
+						</div>
+						<div class="fl mr tc">
+							<img src="images/icons/ppt-large.jpg"/>
+							<br/><small>somePowerPoint.ppt</small>
+						</div>
+						<div class="fl mr tc">
+							<img src="images/icons/pdf-large.jpg"/>
+							<br/><small>somepdf.pdf</small>
+						</div>
+						<div class="fl mr tc">
+							<img src="images/icons/doc-large.jpg"/>
+							<br/><small>document.docx</small>
+						</div>
+					</div>
+					<div class="hide attach-files">
+						Attach More Files: <input type="file" id="attach-files" name="attach-files">
+					</div>
+				</div>
+			</div>
+
+			<div class="clear clearfix mt tooltip" id="request-why">
+				<div class="span-4">
+					<label for="why">Why:</label>
+				</div>
+				<div class="span-12 last">
+					A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-assignee">
+				<div class="span-4">
+					<label for="assignee">Assignee:</label>
+				</div>
+				<div class="span-12 last">
+					<img src="images/temp/nicole.jpg" class="fl mr"/>
+					<div class="fl">
+						<strong><a href="#">Nicole Smith</a></strong><br/>
+						<em>nicole@yahoo.com</em>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clear clearfix mt tooltip" id="request-due-date">
+				<div class="span-4">
+					<label for="due-date">Due:</label>
+					<br/><span class="edited">edited</span>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						Tuesday January 21st, 2011  <a href="#">Nicole Smith</a> <em> 1/22/11 6:35pm</em>
+					</div>
+					<div class="hide edit">
+						<input type="text" name="due-date" id="due-date" class="text span-4 last" value="1/21/2011" title="Due Date"/>
+					</div>
+					
+					<div class="clear clearfix mt">
+						<div class="span-2 tr">
+							<strong><small>Was:</small></strong>
+						</div>
+						<div class="span-10 last grey-bg">
+							<div class="pad5">
+								<small>Wednesday January 22nd, 2011</small>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+	
+	
+
+			<div class="clear clearfix mt tooltip" id="request-conditions">
+				<div class="span-4">
+					<label for="conditions">Conditions of Satisfaction:</label>
+					<br/><span class="edited">edited</span>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here <a href="#">Nicole Smith</a> <em> 1/22/11 6:35pm</em>
+					</div>
+					<div class="edit hide">
+						<textarea type="text" name="conditions" id="conditions" class="text span-12 h-50 last" title="Conditions of Satisfcation">A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here</textarea>
+					</div>
+					
+					<div class="clear clearfix mt">
+						<div class="span-2 tr">
+							<strong><small>Was:</small></strong>
+						</div>
+						<div class="span-10 last grey-bg">
+							<div class="pad5">
+								<small>Original Text here nch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here</small>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+	
+			<div class="clear clearfix mt tooltip" id="request-gains">
+				<div class="span-4">
+					<label for="gains">Gains:</label>
+				</div>
+				<div class="span-12 last">
+					A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-risks">
+				<div class="span-4">
+					<label for="risks">Risks:</label>
+				</div>
+				<div class="span-12 last">
+					A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here
+				</div>
+			</div>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div class="tc border-bottom mt mb clear">
+			<h3 class="title">Activity</h3>
+		</div>
+		<div id="activity-list">
+			
+			<div class="activity-item clearfix">
+				<div class="thumb fl mr">
+					<img src="images/global/avatar.png"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Dan A.</a><em> created the request</em></div>
+					<div class="fr"><em><small>Thu 1/20/2011 7:00PM</small></em></div>
+				</div>
+			</div>
+			
+			<div class="activity-item clear clearfix">
+				<div class="thumb fl mr">
+					<img src="images/global/avatar.png"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Dan A.</a><em> says...</em></div>
+					<div class="fr"><em><small>Fri 1/21/2011 7:00PM</small></em></div>
+					<div class="clear">A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here A bunch of text right here 
+					<br/><small><a href="#" class="pdf-small">SomeFile.pdf</a></small>
+					</div>
+				</div>
+			</div>
+			
+			<div class="activity-item clear clearfix">
+				<div class="thumb fl mr">
+					<img src="images/temp/nicole.jpg"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Nicole</a><em> edited Description, Due Date, and Conditions of Satisfaction</em></div>
+					<div class="fr"><em><small>Sat 1/23/2011 7:00PM</small></em></div>
+					<div class="clear">This is the comments that are with the counter offer
+					</div>
+				</div>
+			</div>
+			
+			<div class="activity-item clear clearfix">
+				<div class="thumb fl mr">
+					<img src="images/global/avatar.png"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Dan A.</a><em> edited Description</em></div>
+					<div class="fr"><em><small>Sat 1/24/2011 7:00PM</small></em></div>
+					<div class="clear">This is the comments that are with the counter offer
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="activity-comments">
+			<div class="">
+				<div class="thumb fl mr">
+					<img src="images/global/avatar.png"/>
+				</div>
+				<div class="span-14 last">
+					<textarea class="span-14 last h-30 dimtext" id="activity-comment">Add Comments Here... </textarea>
+					<br/><small><a href="#" >Attach Files to comment</a></small>
+					<div class="fr mt">
+						<a class="primary-button">Add Comment</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="side-bar span-8 last" id="help-sidebar">
+		<div class="round-corners grey-box span-7 last fr fixed-pos">
+			<div class="pad10">
+				<div id="contextual">
+					<strong>From:</strong> <a href="#">Dan A.</a><br/>
+					<strong>Time Left to Respond: </strong><strong class="red">1 Day 3 Hours</strong>
+					<div class="clear">&nbsp;</div>
+					<div id="default-buttons">
+						<a class="primary-button" href="accepted-request-sender-edited.html">Accept</a>
+						<a class="secondary-button" href="#" onclick="javascript:counterOffer();">Counter</a>
+						<a href="#">Reject</a>
+					</div>
+					<div id="counter-buttons" class="hide">
+						<strong>You edited:</strong><span id="edited-fields"></span>
+						<br/>
+						<textarea class="h-30 span-6 dimtext" id="counter-comments">Add Comments to your counter</textarea>
+						<div class="clear">&nbsp;</div>
+						<a class="primary-button">Send Counter</a>
+						<a href="#" onclick="javascript: cancelCounter();">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#activity-comment").clearsearch();
+	$("#counter-comments").clearsearch();
+
+	$(".display").click(function(){
+		if (editMode){
+			$(this).parent().children(".edit").show();
+			editedFields++;
+			
+			if (editedFields>1){
+				$("#edited-fields").append(", "+$(this).parent().children(".edit").children("input, textarea").attr("title"));	
+			}else{
+				$("#edited-fields").append(" "+$(this).parent().children(".edit").children("input, textarea").attr("title"));		
+			}
+			$(this).hide();
+		}
+	})
+});
+var editMode=false;
+var editedFields=0;
+function counterOffer(){
+	editMode=true;
+	$(".display").css("border", "1px solid");
+	$("#counterMessage").show();
+	$(".attach-files").show();
+	$("#default-buttons").hide();
+	$("#counter-buttons").show();
+}
+function cancelCounter(){
+	editMode=false;
+	$(".display").css("border", "none");
+	$("#counterMessage").hide();
+	$(".attach-files").hide();
+	$("#default-buttons").show();
+	$("#counter-buttons").hide();
+	$(".edit").hide();
+	$(".display").show();
+}
+</script>
+
+	
+<div id="footer" class="container tc">
+<a href="#">What is PDM?</a>&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;<a href="#">Plans and Pricing</a><br/>
+<small><a href="#">SignIn</a>&nbsp;&nbsp;&nbsp;<a href="#">Sitemap</a>&nbsp;&nbsp;&nbsp;<a href="#">FAQs</a></small>
+</div>
+
+</body>
+</html>

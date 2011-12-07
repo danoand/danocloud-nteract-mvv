@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Framework CSS -->
+<link rel="stylesheet" href="styles/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/nteract.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/print.css" type="text/css" media="print">
+<!--[if lt IE 8]><link rel="stylesheet" href="styles/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<script type="text/javascript" src="scripts/jquery.js" /></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.fn.clearsearch = function() {
+				return this.focus(function() {
+					if( this.value == this.defaultValue ) {
+						this.value = "";
+						$(this).removeClass('dimtext');					
+					}
+				}).blur(function() {
+					if( !this.value.length ) {
+						this.value = this.defaultValue;
+						$(this).addClass('dimtext');					
+					}
+				});
+			};
+	});
+</script>
+<title>nteract</title>
+</head>
+<body class="conversion"> <!-- set to conversion for in flow pages -->
+<div class="container" id="header">
+	<h1><a href="index.html">nteract.</a></h1>
+	<div class="fr mt">
+		Welcome Dan  |  <a href="#">Logout</a>
+	</div>
+</div>
+
+
+<div class="container">
+	<ul id="top-tabs">
+	<li><a id="dashboard" href="index.html" class="">DASHBOARD</a></li>
+	<li><a id="request" class="active">REQUEST</a></li>
+	<li><a id="promise" >PROMISE</a></li>
+	<li><a id="manage" >MANAGE</a></li>
+	<li><a id="identity">IDENTITY</a></li>
+	<li><a id="network" >NETWORK</a></li>
+</ul>
+	<div class="clear">&nbsp;</div>
+	<div class="span-16">
+		<h2 class="title fl">Make a Request</h2>
+		<a href="#" class="h2-link">&raquo; Return to Dashboard</a>
+		<div class="span-16 last">
+			<div class="tc border-bottom mt">
+				<h3 class="title">What</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-title">
+				<div class="span-4">
+					<label for="request-title"><span>*</span>Title:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="text" name="request-title" id="request-title" class="text span-12 last"/>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-description">
+				<div class="span-4">
+					<label for="description"><span>*</span>Description:</label>
+				</div>
+				<div class="span-12 last">
+					<textarea type="text" name="description" id="description" class="text span-12 h-50 last"></textarea>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-files">
+				<div class="span-4">
+					<label for="attach-files3">Attach Files:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="file" id="attach-files" name="attach-files">
+				</div>
+			</div>
+			<div class="tc border-bottom mt">
+				<h3 class="title">Why</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-why">
+				<div class="span-4">
+					<label for="why"><span>*</span>Why:</label>
+				</div>
+				<div class="span-12 last">
+					<textarea type="text" name="why" id="why" class="text span-12 h-50 last"></textarea>
+				</div>
+			</div>
+			<div class="tc border-bottom mt">
+				<h3 class="title">Who</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-assignee">
+				<div class="span-4">
+					<label for="assignee"><span>*</span>Assignee:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="text" name="assignee" id="assignee" class="text span-12 last search-icon"/>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-assignee-email">
+				<div class="span-4">
+					<label for="assignee-email"><span>*</span>Assignee Email:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="text" name="assignee-email" id="assignee-email" class="text span-12 last"/>
+				</div>
+			</div>
+			<div class="tc border-bottom mt">
+				<h3 class="title">When</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-due-date">
+				<div class="span-4">
+					<label for="due-date"><span>*</span>Due:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="text" name="due-date" id="due-date" class="date-pick text span-4 last"/>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-expiration">
+				<div class="span-4">
+					<label for="request-expiration">Request Expiration:</label>
+				</div>
+				<div class="span-12 last">
+					<input type="text" name="request-expiration" id="request-expiration" class="date-pick text span-4 last"/>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-reminder">
+				<div class="span-4">
+					<label for="reminder1">Reminder for Project Due:</label>
+				</div>
+				<div class="span-12 last">
+					<div id="reminders">
+						<select name="reminder1" id="reminder1" class="text clear fl mb">
+							<option>Please Select</option>
+							<option>30 Minutes Before</option>
+							<option>1 Hour Before</option>
+							<option>1 Day Before</option>
+							<option>3 Days Before</option>
+							<option>1 Week Before</option>
+							<option>2 Weeks Before</option>
+							<option>1 Month Before</option>
+						</select>
+					</div>
+					<div class="hide fl ml mt5" id="remove-reminder">
+						<small><a onclick="javascript:removeReminder();">Remove</a></small>
+					</div>
+					<div class="clear fl"><a id="add-reminder" class="plus-icon" onclick="javascript:addReminder();">Add Another Reminder</a></div>
+				</div>
+			</div>
+			<div class="tc border-bottom mt">
+				<h3 class="title">Conditions</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-conditions">
+				<div class="span-4">
+					<label for="conditions"><span>*</span>Conditions of Satisfaction:</label>
+				</div>
+				<div class="span-12 last">
+					<textarea type="text" name="conditions" id="conditions" class="text span-12 h-50 last"></textarea>
+				</div>
+			</div>
+			<div class="tc border-bottom mt">
+				<h3 class="title">Impact</h3>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-gains">
+				<div class="span-4">
+					<label for="gains">Gains:</label>
+				</div>
+				<div class="span-12 last">
+					<textarea type="text" name="gains" id="gains" class="text span-12 h-50 last"></textarea>
+					<input type="checkbox" name="gains-visible" id="gains-visible"/>
+					<label for="gains-visible">Make gains visible to the assignee of request</label>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-risks">
+				<div class="span-4">
+					<label for="risks">Risks:</label>
+				</div>
+				<div class="span-12 last">
+					<textarea type="text" name="risks" id="risks" class="text span-12 h-50 last"></textarea>
+					<input type="checkbox" name="risks-visible" id="risks-visible"/>
+					<label for="risks-visible">Make risks visible to the assignee of request</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="side-bar span-8 last" id="help-sidebar">
+		<div class="round-corners grey-box span-7 last fr">
+			<div class="pad10">
+				<div id="contextual">
+					<strong>Help:</strong> Click on a text field and helpful information will display explaining what to do.
+				</div>
+				<div class="clear mt20 mb">
+					<a href="view-request.html" class="primary-button">Send</a>
+					<a href="#" class="secondary-button">Save as Draft</a>
+					<a href="#">Cancel</a>
+				</div>
+			</div>
+		</div>
+		<div id="arrow" class="fr hide"></div>
+
+	</div>
+</div>
+<script type="text/javascript" src="scripts/date.js"></script>
+<script type="text/javascript" src="scripts/datepicker.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="styles/datePicker.css">
+
+<script type="text/javascript">
+var reminders=1;
+function addReminder(){
+	reminders++;
+	$("#remove-reminder").show();
+	$("#reminder1").clone().appendTo("#reminders").attr("id", "reminder"+reminders).attr("name", "reminder"+reminders);
+}
+function removeReminder(){
+	$("#reminder"+reminders).remove();
+	reminders--;
+	if (reminders<2){
+		$("#remove-reminder").hide();	
+	}
+}
+Date.firstDayOfWeek = 0;
+Date.format = 'mm/dd/yyyy';
+$(document).ready(function(){
+	
+	$('.date-pick').datePicker();
+	$('.date-pick').focus(function(){
+		$(this).dpDisplay();
+	});
+		
+
+	
+	$(".tooltip").click(function(){
+		var title="";
+		var des="";
+		switch ($(this).attr("id")){
+			case "request-title":
+				title="Title";
+				des="Give an appropriate title to the request so it is easy to recognize in your dashboard. <em>ex: UI redesign google.com, business requirements for feature 23212</em>";
+				break;
+			case "request-description":
+				title="Description";
+				des="Create a very thorough description of the request, provide any background knowledge that may be required to complete the request to your standards";
+				break;
+			case "request-files":
+				title="Attach Files";
+				des="Attach and files that may be needed. Images, documents, presentations, or videos could help the assignee deliver the best results. <em>Max File Size: 50mb</em>";
+				break;
+			case "request-why":
+				title="Why";
+				des="Knowing the intent behind a request can go a long way for the assignee.  Let them know why you need this request done.";
+				break;
+			case "request-assignee":
+				title="Assignee";
+				des="Who the request goes to";
+				break;
+			case "request-assignee-email":
+				title="Assignee Email";
+				des="The assignee&#39;s email address that the request will be delivered to.";
+				break;
+			case "request-due-date":
+				title="Due Date";
+				des="The date you need the request done.  Be realistic given the deliverables at hand";
+				break;
+			case "request-expiration":
+				title="Request Expiration";
+				des="The date the request offer will expire.  Set a good time frame so you can easily reassign to someone else if the assignee is unavailable.";
+				break;
+			case "request-reminder":
+				title="Reminders";
+				des="Set reminders for yourself to check the status on the project.  You set multiple reminders if it helps.";
+				break;
+			case "request-conditions":
+				title="Conditions of Satisfaction";
+				des="Fully describe all the tasks that need to be complete for you to consider the request fulfilled.  This will be the scope of the project.";
+				break;
+			case "request-gains":
+				title="Gains";
+				des="Describe the gains you and/or your business will achieve by completing this request.  You can make this visible to the assignee or not.";
+				break;
+			case "request-risks":
+				title="Risks";
+				des="Describe the risks you and/or your business that could occur by completing this request.  You can make this visible to the assignee or not.";
+				break;
+		}
+		
+		$("#contextual").html("<strong>"+title+":</strong> "+des);
+		$("#help-sidebar").css("top", parseInt($(this).offset().top-120)+"px")
+		$("#arrow").show();
+	})
+	
+});
+</script>
+
+	
+<div id="footer" class="container tc">
+<a href="#">What is PDM?</a>&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;<a href="#">Plans and Pricing</a><br/>
+<small><a href="#">SignIn</a>&nbsp;&nbsp;&nbsp;<a href="#">Sitemap</a>&nbsp;&nbsp;&nbsp;<a href="#">FAQs</a></small>
+</div>
+
+</body>
+</html>
