@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Framework CSS -->
+<link rel="stylesheet" href="styles/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/nteract.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/print.css" type="text/css" media="print">
+<!--[if lt IE 8]><link rel="stylesheet" href="styles/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<script type="text/javascript" src="scripts/jquery.js" /></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$.fn.clearsearch = function() {
+				return this.focus(function() {
+					if( this.value == this.defaultValue ) {
+						this.value = "";
+						$(this).removeClass('dimtext');					
+					}
+				}).blur(function() {
+					if( !this.value.length ) {
+						this.value = this.defaultValue;
+						$(this).addClass('dimtext');					
+					}
+				});
+			};
+			$("#name, #email").clearsearch();
+	});
+	
+</script>
+<title>nteract</title>
+</head>
+<body class="main"> <!-- set to conversion for in flow pages -->
+<div class="container" id="header">
+	<div class="span-9">
+        <h1><a href="#home">nteract.</a></h1><br />
+        <h2 class="subtext clear">powering <strong>promise-driven</strong> management</h2>
+    </div>
+    <div class="nav">
+        <a href="#pdm" id="header-what">what is pdm?</a>
+        <a href="#features" id="header-features">features.</a>
+        <a href="#pricing" id="header-pricing">plans &amp; pricing</a>
+    </div>
+    <div class="fr">
+    	<a href="#login" class="login-icon">login</a>
+    </div>
+
+</div>
+
+<div class="container mt20" id="homepage">
+    <div id="cta-section">
+    	<div id="screenshot"></div>
+        <div id="signup" class="tc mt">
+        	<label for="email">email:</label>
+            <input name="email" id="email" class="round-corners dimtext" type="text" value="enter your contact email" />
+            <label for="name" class="clear">name:</label>
+            <input name="name" id="name" class="round-corners dimtext" type="text"  value="enter your first and last name"/>
+            <h3 class="dimtext"> &mdash; or create an account with &mdash; </h3>
+            <div class="clear">&nbsp;</div>
+            <a href="#facebooklogin"><img src="images/homepage/facebook-login.png"/></a>
+            <a href="#googlelogin"><img src="images/homepage/google-login.png"/></a>
+            <a href="#linkedinlogin"><img src="images/homepage/linked-login.png"/></a>
+        </div>
+        <div class="clear" id="steps-3">
+        	<div class="step">
+                <h3>Get Serious</h3>
+                <span>making powerful promises</span>
+            </div>
+            <div class="step">
+                <h3>Get Effective</h3>
+                <span>delivering to customers, colleagues, and friends</span>
+            </div>
+            <div class="step">
+                <h3>Get Valuable</h3>
+                <span>building your network with real accomplishments</span>
+            </div>
+        	
+        </div>
+    </div>
+    
+    <div id="home-bottom" class="mt">
+    	<div class="span-8">
+    		<h3><strong>Testimonials</strong></h3>
+            <div class="clear">
+            	<em>nteract delivers results.  Finally I am getting things done around here!</em>
+                <p class="tr"><strong>John Johnson</strong> &ndash; Palo Alto, CA</p>
+            </div>
+            <div class="clear">
+            	<em>Never anything missed with nteract.  It takes all out all the worries I use to have when working with 3rd parties</em>
+                <p class="tr"><strong>Tim Smith</strong> &ndash; Chicago, Il</p>
+            </div>
+            <div class="clear">
+            	<em>Take out the I of interacting and make it about collaborating.  that is what nteract delivers!</em>
+                <p class="tr"><strong>Susan Lee</strong> &ndash; Austin, TX</p>
+            </div>
+        </div>
+        <div class="span-16 tr last">
+        
+        	<img src="images/homepage/placeholder-video.jpg"
+        </div>
+    </div>
+    
+</div>
+
+<div id="footer" class="container tc">
+<a href="#">What is PDM?</a>&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;<a href="#">Plans and Pricing</a><br/>
+<small><a href="#">SignIn</a>&nbsp;&nbsp;&nbsp;<a href="#">Sitemap</a>&nbsp;&nbsp;&nbsp;<a href="#">FAQs</a></small>
+</div>
+    
+
+</body>
+</html>
