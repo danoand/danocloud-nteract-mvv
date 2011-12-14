@@ -10,6 +10,8 @@ get '/login.html' do
 end
 
 post '/dashboard.html' do
-  redirect "/dashboard.html"
+#  redirect "/dashboard.html"
+  @my_tmphash = params
+  erb :showparameters
 end
 
