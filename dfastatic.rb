@@ -1,17 +1,19 @@
 require 'rubygems'
 require 'sinatra'
 
+configure do
+  load 'setupdata.rb'
+end
+
 get '/' do
   File.read(File.join('public', 'home.html'))
 end
 
 get '/login.html' do
-    File.read(File.join('public', 'login.html'))
+  File.read(File.join('public', 'login.html'))
 end
 
-post '/dashboard.html' do
-#  redirect "/dashboard.html"
-  @my_tmphash = params
-  erb :showparameters
+post '/dashboard' do
+	erb :dashboard
 end
 
