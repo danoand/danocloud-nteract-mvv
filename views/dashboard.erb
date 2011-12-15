@@ -81,33 +81,33 @@
 		<div class="clear">&nbsp;</div>
 		<div class="clear span-16" id="activity-section">
 			<h2 class="title">Activity</h2>
-			<table id="activity">
-				<% (1..@@days_nbr).each do |h| 																																%>
-					<% if h.odd? then 																																		%>
+			<% @@days_arr.each_index do |h| 																																%>
+				<%= "<table id=\"activity\">"																																%>
+					<% if (h+1).odd? then 																																	%>
 				    <% 	rowspanprop = "rowspan=\"7\""																														%>
 				    <% 	classprop = "class=\"date-col-odd\""																												%>
 					<% else 																																				%>
-				    <% 	rowspanprop = "rowspan=\"7\""																														%>
-				    <% 	classprop = "class=\"date-col-odd\""																												%>
+				    <% 	rowspanprop = "rowspan=\"5\""																														%>
+				    <% 	classprop = "class=\"date-col-even\""																												%>
 				    <% end																																					%>
-					
-						<tr>
-							<%= "<td rowspan=\"7\" class=\"date-col-odd\">#{@@days_arr[0]}<br/><span class=\"month\">#{@@month_val}</span></td>"							%>
-							<%= "<td><strong>#{@@events1_arr[0]["event"]}:</strong> <a>#{@@events1_arr[0]["title"]}</a> <em>#{@@events1_arr[0]["time"]}</em></td>"			%>
-							<%= "<td class=\"tr\"><em>#{@@events1_arr[0]["person"]}</em></td>"																				%>
-						</tr>
-						<% (1..@@events1_arr.length-1).each do |i|																											%>
-							<% if i == @@events1_arr.length-1																												%>
+						  <%= "<tr>"																																		%>
+							<%= "<td #{rowspanprop} #{classprop}>#{@@dates_arr[h]}<br/><span class=\"month\">#{@@month_val}</span></td>"									%>
+							<%= "<td><strong>#{@@days_arr[h][0]["event"]}:</strong> <a>#{@@days_arr[h][0]["title"]}</a> <em>#{@@days_arr[h][0]["time"]}</em></td>"			%>
+							<%= "<td class=\"tr\"><em>#{@@days_arr[h][0]["person"]}</em></td>"																				%>
+						  <%= "</tr>"			 																															%>
+						<% (1..@@days_arr[h].length-1).each do |i|																											%>
+							<% if i == @@days_arr[h].length-1																												%>
 							<% 		trtag = "<tr class=\"last\">"																											%>
 							<% else 																																		%>
 							<% 		trtag = "<tr>"																															%>
 							<% end 																																			%>
 							<%= "#{trtag}"																																	%>
-							<%= "<td><strong>#{@@events1_arr[i]["event"]}:</strong> <a>#{@@events1_arr[i]["title"]}</a> <em>#{@@events1_arr[i]["time"]}</em></td>"			%>
-							<%= "<td class=\"tr\"><em>#{@@events1_arr[i]["person"]}</em></td>"																				%>
+							<%= "<td><strong>#{@@days_arr[h][i]["event"]}:</strong> <a>#{@@days_arr[h][i]["title"]}</a> <em>#{@@days_arr[h][i]["time"]}</em></td>"			%>
+							<%= "<td class=\"tr\"><em>#{@@days_arr[h][i]["person"]}</em></td>"																				%>
 							<%= "</tr>"																																		%>
 						<% end 																																				%>
-			</table>
+				<%= "</table>"																																				%>
+			<% end 																																							%>
 		</div>
 	</div>
 	
