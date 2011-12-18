@@ -39,7 +39,7 @@ end
 
 @@events1_arr = [
   {"event"=>"New Request","title"=>"Investor Introduction - Jim Smith","time"=>"4:30 PM","person"=>"Lesley W"},
-  {"event"=>"Updated Request","title"=>"My Training Goals ","time"=>"1:30 PM","person"=>"You"},
+  {"event"=>"Updated Request","title"=>"Education & Training Goals ","time"=>"1:30 PM","person"=>"You"},
   {"event"=>"Countered Request","title"=>"New Company Tagline","time"=>"10:25 AM","person"=>"Malcolm A"}
 ]
 
