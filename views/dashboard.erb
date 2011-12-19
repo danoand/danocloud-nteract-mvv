@@ -168,7 +168,7 @@
 				<% @@names_arr.each do |element_hash| 																							%>
 					<%= "<div class=\"person\">"																								%>
 					<%= 	"<div class=\"thumb fl mr\">"																						%>
-					<%=			"<img src=\"images/global/avatar.png\"/>"																		%>
+					<%=			"<img src=\"images/people/#{element_hash["image_file"]}\"/>"													%>
 					<%=		"</div>"																											%>
 					<%=		"<div class=\"name\">"																								%>
 					<%=			"<a href=\"#\"><strong>#{element_hash["firstname"]} #{element_hash["lastname"]}</strong></a><br/>"				%>

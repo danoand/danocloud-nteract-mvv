@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Framework CSS -->
+<link rel="stylesheet" href="styles/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/nteract.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="styles/print.css" type="text/css" media="print">
+<!--[if lt IE 8]><link rel="stylesheet" href="styles/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<script type="text/javascript" src="scripts/jquery.js" /></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.fn.clearsearch = function() {
+				return this.focus(function() {
+					if( this.value == this.defaultValue ) {
+						this.value = "";
+						$(this).removeClass('dimtext');					
+					}
+				}).blur(function() {
+					if( !this.value.length ) {
+						this.value = this.defaultValue;
+						$(this).addClass('dimtext');					
+					}
+				});
+			};
+	});
+</script>
+<title>nteract</title>
+</head>
+<body class="conversion"> <!-- set to conversion for in flow pages -->
+<div class="container" id="header">
+	<h1><a href="index.html">nteract.</a></h1>
+	<div class="fr mt">
+		Welcome Charles  |  <a href="#">Logout</a>
+	</div>
+</div>
+<div class="container">
+	<ul id="top-tabs">
+	<li><a id="dashboard" href="index.html" class="">DASHBOARD</a></li>
+	<li><a id="request" class="active">REQUEST</a></li>
+	<li><a id="promise" >PROMISE</a></li>
+	<li><a id="manage" >MANAGE</a></li>
+	<li><a id="identity">IDENTITY</a></li>
+	<li><a id="network" >NETWORK</a></li>
+</ul>
+	<div class="clear">&nbsp;</div>
+	<div class="span-16">
+		<%= "<h2 class=\"title fl\">#{@@myrequest_hsh["title"]}</h2>" %>
+		<a href="#" class="h2-link">&raquo; Return to Dashboard</a>
+		<div class="span-16 last">
+			<div class="notice hide" id="counterMessage">Click the outlined area you would like to change for the counter</div>
+			<div class="clear clearfix mt tooltip" id="request-description">
+				<div class="span-4">
+					<label for="description">Description:</label>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						<%= "#{@@myrequest_hsh["description"]}" %>
+					</div>
+					<div class="edit hide">
+						<textarea type="text" name="description" id="description" class="text span-12 h-50 last" title="Description"><%= "#{@@myrequest_hsh["title"]}" %> </textarea>
+					</div>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-files">
+				<div class="span-4">
+					<label for="attach-files3">Attach Files:</label>
+				</div>
+				<div class="span-12 last">
+					<div class="">
+						<div class="fl mr tc">
+							<img src="images/icons/pdf-large.jpg"/>
+								<%= "<br/><small>#{@@myrequest_hsh["files"]}</small>" %>
+						</div>
+					</div>
+					<div class="hide attach-files">
+						Attach More Files: <input type="file" id="attach-files" name="attach-files">
+					</div>
+				</div>
+			</div>
+
+			<div class="clear clearfix mt tooltip" id="request-why">
+				<div class="span-4">
+					<label for="why">Why:</label>
+				</div>
+				<div class="span-12 last">
+					<%= "#{@@myrequest_hsh["why"]}" %>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-assignee">
+				<div class="span-4">
+					<label for="assignee">Assignee:</label>
+				</div>
+				<div class="span-12 last">
+					<img src="images/people/male_04.jpg" class="fl mr"/>
+					<div class="fl">
+						<strong><a href="#">Charles G.</a></strong><br/>
+						<em>charles.gonderson@gmail.com</em>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clear clearfix mt tooltip" id="request-due-date">
+				<div class="span-4">
+					<label for="due-date">Due:</label>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						<% timediff1 = ((@@myrequest_hsh["date"] - Time.now)/(60*60*24)).round %>
+						<%= "#{@@weekday_arr[@@myrequest_hsh["date"].wday]}  #{@@month_long_arr[@@myrequest_hsh["date"].month]} #{@@myrequest_hsh["date"].mday}, #{@@myrequest_hsh["date"].year}  #{@@myrequest_hsh["date"].hour}:#{@@myrequest_hsh["date"].min} CST <strong class=\"red\">#{timediff1} Days</strong>" %>
+					</div>
+					<div class="hide edit">
+						<%= "<input type=\"text\" name=\"due-date\" id=\"due-date\" class=\"text span-4 last\" value=\"#{@@myrequest_hsh["date_countered"].strftime("%m/%d/%Y")}\" title=\"Due Date\"/>" %>
+					</div>
+				</div>
+			</div>
+	
+	
+
+			<div class="clear clearfix mt tooltip" id="request-conditions">
+				<div class="span-4">
+					<label for="conditions">Conditions of Satisfaction:</label>
+				</div>
+				<div class="span-12 last">
+					<div class="display">
+						<%= "#{@@myrequest_hsh["conditions"]}" %>
+					</div>
+					<div class="edit hide">
+						<textarea type="text" name="conditions" id="conditions" class="text span-12 h-50 last" title="Conditions of Satisfcation"><%= "#{@@myrequest_hsh["conditions"]}" %></textarea>
+					</div>
+				</div>
+			</div>
+	
+			<div class="clear clearfix mt tooltip" id="request-gains">
+				<div class="span-4">
+					<label for="gains">Gains:</label>
+				</div>
+				<div class="span-12 last">
+					<%= "#{@@myrequest_hsh["impact_gain"]}" %>
+				</div>
+			</div>
+			<div class="clear clearfix mt tooltip" id="request-risks">
+				<div class="span-4">
+					<label for="risks">Risks:</label>
+				</div>
+				<div class="span-12 last">
+					<%= "#{@@myrequest_hsh["impact_risk"]}" %>
+				</div>
+			</div>
+		</div>
+		<div class="clear">&nbsp;</div>
+		<div class="tc border-bottom mt mb clear">
+			<h3 class="title">Activity</h3>
+		</div>
+		<div id="activity-list">
+			
+			<div class="activity-item clearfix">
+				<div class="thumb fl mr">
+					<img src="images/people/image_dan.jpg"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Dan A.</a><em> created the request</em></div>
+					<%= "<div class=\"fr\"><em><small>#{@@time_obj.inspect}</small></em></div>" %>
+				</div>
+			</div>
+			
+			<div class="activity-item clear clearfix">
+				<div class="thumb fl mr">
+					<img src="images/people/image_dan.jpg"/>
+				</div>
+				<div class="span-14 last">
+					<div class="fl"><a href="#">Dan A.</a><em> says...</em></div>
+					<%= "<div class=\"fr\"><em><small>#{@@time_obj.inspect}</small></em></div>" %>
+					<div class="clear">Charles, take a quick scan and shoot me a message if you have any initial questions. Thanks!
+					</div>
+				</div>
+			</div>
+			
+
+		</div>
+		<div id="activity-comments">
+			<div class="">
+				<div class="thumb fl mr">
+					<img src="images/people/male_04.jpg"/>
+				</div>
+				<div class="span-14 last">
+					<textarea class="span-14 last h-30 dimtext" id="activity-comment">Add Comments Here... </textarea>
+					<br/><small><a href="#" >Attach Files to comment</a></small>
+					<div class="fr mt">
+						<a class="primary-button">Add Comment</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="side-bar span-8 last" id="help-sidebar">
+		<div class="round-corners grey-box span-7 last fr fixed-pos">
+			<div class="pad10">
+				<div id="contextual">
+					<strong>From:</strong> <a href="#">Dan A.</a><br/>
+						<% timediff2 = ((@@myrequest_hsh["expiration"] - Time.now)/(60*60*24)).round %>
+						<%= "<strong>Time Left to Respond:</strong><strong class=\"red\"> #{timediff2} Days</strong>" %>
+					<div class="clear">&nbsp;</div>
+					<div id="default-buttons">
+						<a class="primary-button">Accept</a>
+						<a class="secondary-button" href="#" onclick="javascript:counterOffer();">Counter</a>
+						<a href="#">Reject</a>
+					</div>
+					<div id="counter-buttons" class="hide">
+						<strong>You edited:</strong><span id="edited-fields"></span>
+						<br/>
+						<textarea class="h-30 span-6 dimtext" id="counter-comments">Add Comments to your counter</textarea>
+						<div class="clear">&nbsp;</div>
+						<a class="primary-button" href="/counterrequestemail">Send Counter</a>
+						<a href="#" onclick="javascript: cancelCounter();">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#activity-comment").clearsearch();
+	$("#counter-comments").clearsearch();
+
+	$(".display").click(function(){
+		if (editMode){
+			$(this).parent().children(".edit").show();
+			editedFields++;
+			
+			if (editedFields>1){
+				$("#edited-fields").append(", "+$(this).parent().children(".edit").children("input, textarea").attr("title"));	
+			}else{
+				$("#edited-fields").append(" "+$(this).parent().children(".edit").children("input, textarea").attr("title"));		
+			}
+			$(this).hide();
+		}
+	})
+});
+var editMode=false;
+var editedFields=0;
+function counterOffer(){
+	editMode=true;
+	$(".display").css("border", "1px solid");
+	$("#counterMessage").show();
+	$(".attach-files").show();
+	$("#default-buttons").hide();
+	$("#counter-buttons").show();
+}
+function cancelCounter(){
+	editMode=false;
+	$(".display").css("border", "none");
+	$("#counterMessage").hide();
+	$(".attach-files").hide();
+	$("#default-buttons").show();
+	$("#counter-buttons").hide();
+}
+</script>
+
+	
+<div id="footer" class="container tc">
+<a href="#">What is PDM?</a>&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;<a href="#">Plans and Pricing</a><br/>
+<small><a href="#">SignIn</a>&nbsp;&nbsp;&nbsp;<a href="#">Sitemap</a>&nbsp;&nbsp;&nbsp;<a href="#">FAQs</a></small>
+</div>
+
+</body>
+</html>
