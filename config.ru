@@ -1,2 +1,2 @@
-require 'main'
+require './dfastatic'
 run Sinatra::Application
