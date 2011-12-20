@@ -9,8 +9,6 @@
 puts "-----------------"
 puts "start setting up global data"
 
-@@time_obj = Time.new
-
 @@month_arr = [
   "JAN",
   "FEB",
@@ -52,16 +50,6 @@ puts "start setting up global data"
   "Saturday"
   ]
 
-@@month_val = @@month_arr[@@time_obj.month - 1]
-
-@@dates_arr = Array.new
-4.times do |i|
-  if @@time_obj.day - i > 0 then 
-    @@dates_arr.push(@@time_obj.day - i)
-  else
-    @@dates_arr.push(30 - i)
-  end
-end
 
 @@events1_arr = [
   {"event"=>"New Request","title"=>"Investor Introduction - Jim Smith","time"=>"4:30 PM","person"=>"Lesley W"},
@@ -111,6 +99,10 @@ end
   ]
   
 @@myrequest_hsh = {
+  "requester_firstname"=>"Dan",
+  "requester_lastname"=>"Anderson",
+  "receiver_firstname"=>"Charles",
+  "receiver_lastname"=>"Gonderson",
   "title"=>"Source 3 Candidates for the VP of Marketing Role",
   "description"=>"Find three candidates that we can consider for the VP of Markerting position.  These can come from your personal network, our 'friends & family' list, or traditional sources. See the attached job description",
   "files"=>"JobDescription_VPMarketing.pdf",
@@ -118,10 +110,7 @@ end
   "who"=>"Charles Gonderson",
   "who_email"=>"charles.gonderson@gmail.com",
   "who_email_image"=>"male_04.jpg",
-  "date"=>Time.local(2012,2,15,17,30,0),
-  "date_countered"=>Time.local(2012,3,1,17,30,0),
   "comments_countered"=>"Dan, sounds goods, just adding a little more time due some other commitments.  Okay with you?",
-  "expiration"=>Time.local(2012,1,9,17,30,0),
   "conditions"=>"At least three candidates; 10 years of experience in technology or software industry; early stage and established companies; 'good person' persona",
   "impact_gain"=>"This is a key hire. Success will enable us to consider you our 'goto' source for executive and director level talent",
   "impact_risk"=>"Failure to find this candidate quickly will put us back on our company roadmap that we have committed to with our board. Don't let us down!"

@@ -32,7 +32,7 @@
 <div class="container" id="header">
 	<h1><a href="index.html">nteract.</a></h1>
 	<div class="fr mt">
-		<%= "Welcome #{@@myrequest_hsh["receiver_firstname"]}  |  <a href=\"#\">Logout</a>" %>
+		<%= "Welcome #{@@myrequest_hsh["requester_firstname"]}  |  <a href=\"#\">Logout</a>" %>
 	</div>
 </div>
 <div class="container">
@@ -46,7 +46,7 @@
 </ul>
 	<div class="clear">&nbsp;</div>
 	<div class="span-16">
-		<%= "<h2 class=\"title fl\">#{@@myrequest_hsh["title"]}</h2>" %>
+		<h2 class="title fl">Request Name</h2>
 		<a href="#" class="h2-link">&raquo; Return to Dashboard</a>
 		<div class="span-16 last">
 			<div class="notice hide" id="counterMessage">Click the outlined area you would like to change for the counter</div>
@@ -58,9 +58,6 @@
 					<div class="display">
 						<%= "#{@@myrequest_hsh["description"]}" %>
 					</div>
-					<div class="edit hide">
-						<textarea type="text" name="description" id="description" class="text span-12 h-50 last" title="Description"><%= "#{@@myrequest_hsh["title"]}" %> </textarea>
-					</div>
 				</div>
 			</div>
 			<div class="clear clearfix mt tooltip" id="request-files">
@@ -68,14 +65,14 @@
 					<label for="attach-files3">Attach Files:</label>
 				</div>
 				<div class="span-12 last">
-					<div class="">
+					<div class="display">
 						<div class="fl mr tc">
 							<img src="images/icons/pdf-large.jpg"/>
 								<%= "<br/><small>#{@@myrequest_hsh["files"]}</small>" %>
 						</div>
 					</div>
-					<div class="hide attach-files">
-						Attach More Files: <input type="file" id="attach-files" name="attach-files">
+					<div class="hide edit">
+						<input type="file" id="attach-files" name="attach-files">
 					</div>
 				</div>
 			</div>
@@ -93,10 +90,10 @@
 					<label for="assignee">Assignee:</label>
 				</div>
 				<div class="span-12 last">
-					<img src="images/people/male_04.jpg" class="fl mr"/>
+						<%= "<img src=\"images/people/#{@@myrequest_hsh["who_email_image"]}\" class=\"fl mr\"/>" %>
 					<div class="fl">
-						<strong><a href="#">Charles G.</a></strong><br/>
-						<em>charles.gonderson@gmail.com</em>
+						<%= "<strong><a href=\"#\">#{@@myrequest_hsh["who"]}</a></strong><br/>" %>
+						<%= "<em>#{@@myrequest_hsh["who_email"]}</em>" %>
 					</div>
 				</div>
 			</div>
@@ -104,16 +101,31 @@
 			<div class="clear clearfix mt tooltip" id="request-due-date">
 				<div class="span-4">
 					<label for="due-date">Due:</label>
+					<br/><span class="edited">edited</span>
 				</div>
 				<div class="span-12 last">
 					<div class="display">
-						<% timediff1 = ((@@myrequest_hsh["date"] - Time.now)/(60*60*24)).round %>
-						<%= "#{@@weekday_arr[@@myrequest_hsh["date"].wday]}  #{@@month_long_arr[@@myrequest_hsh["date"].month]} #{@@myrequest_hsh["date"].mday}, #{@@myrequest_hsh["date"].year}  #{@@myrequest_hsh["date"].hour}:#{@@myrequest_hsh["date"].min} CST <strong class=\"red\">#{timediff1} Days</strong>" %>
+						<% timediff1 = ((@@myrequest_hsh["date_countered"] - Time.now)/(60*60*24)).round %>
+						<% timediff3 = Time.now - (60*60*1) %>
+						<%= "#{@@myrequest_hsh["date_countered"].strftime("%A %B %d, %Y %X CST")}  <a href=\"#\">#{@@myrequest_hsh["receiver_firstname"]} #{@@myrequest_hsh["receiver_lastname"]}</a> <em> #{timediff3.strftime("%c")}</em>" %>
 					</div>
 					<div class="hide edit">
-						<%= "<input type=\"text\" name=\"due-date\" id=\"due-date\" class=\"text span-4 last\" value=\"#{@@myrequest_hsh["date_countered"].strftime("%m/%d/%Y")}\" title=\"Due Date\"/>" %>
+						<input type="text" name="due-date" id="due-date" class="text span-4 last" value="1/21/2011" title="Due Date"/>
 					</div>
+					
+					<div class="clear clearfix mt">
+						<div class="span-2 tr">
+							<strong><small>Was:</small></strong>
+						</div>
+						<div class="span-10 last grey-bg">
+							<div class="pad5">
+								<%= "<small>#{@@myrequest_hsh["date"].strftime("%A %B %d, %Y %X CST")}</small>" %>
+							</div>
+						</div>
+					</div>
+					
 				</div>
+				
 			</div>
 	
 	
@@ -127,7 +139,7 @@
 						<%= "#{@@myrequest_hsh["conditions"]}" %>
 					</div>
 					<div class="edit hide">
-						<textarea type="text" name="conditions" id="conditions" class="text span-12 h-50 last" title="Conditions of Satisfcation"><%= "#{@@myrequest_hsh["conditions"]}" %></textarea>
+						<textarea type="text" name="conditions" id="conditions" class="text span-12 h-50 last"></textarea>
 					</div>
 				</div>
 			</div>
@@ -176,13 +188,12 @@
 					</div>
 				</div>
 			</div>
-			
 
 		</div>
 		<div id="activity-comments">
 			<div class="">
 				<div class="thumb fl mr">
-					<img src="images/people/male_04.jpg"/>
+					<img src="images/people/image_dan.jpg"/>
 				</div>
 				<div class="span-14 last">
 					<textarea class="span-14 last h-30 dimtext" id="activity-comment">Add Comments Here... </textarea>
@@ -193,18 +204,18 @@
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 	
 	<div class="side-bar span-8 last" id="help-sidebar">
 		<div class="round-corners grey-box span-7 last fr fixed-pos">
 			<div class="pad10">
 				<div id="contextual">
-					<strong>From:</strong> <a href="#">Dan A.</a><br/>
-						<% timediff2 = ((@@myrequest_hsh["expiration"] - Time.now)/(60*60*24)).round %>
-						<%= "<strong>Time Left to Respond:</strong><strong class=\"red\"> #{timediff2} Days</strong>" %>
+					<%= "<strong>From:</strong> <a href=\"#\">#{@@myrequest_hsh["requester_firstname"]} #{@@myrequest_hsh["requester_lastname"][0,1].upcase} </a><br/>" %>
+					<% timediff2 = ((@@myrequest_hsh["expiration"] - Time.now)/(60*60*24)).round %>
+					<%= "<strong>Time Left to Respond: </strong><strong class=\"red\">#{timediff2} Days</strong>" %>
 					<div class="clear">&nbsp;</div>
 					<div id="default-buttons">
-						<a class="primary-button">Accept</a>
+						<a class="primary-button" href="accepted-request-sender-edited.html">Accept</a>
 						<a class="secondary-button" href="#" onclick="javascript:counterOffer();">Counter</a>
 						<a href="#">Reject</a>
 					</div>
@@ -213,7 +224,7 @@
 						<br/>
 						<textarea class="h-30 span-6 dimtext" id="counter-comments">Add Comments to your counter</textarea>
 						<div class="clear">&nbsp;</div>
-						<a class="primary-button" href="/counterrequestemail">Send Counter</a>
+						<a class="primary-button">Send Counter</a>
 						<a href="#" onclick="javascript: cancelCounter();">Cancel</a>
 					</div>
 				</div>
@@ -259,6 +270,8 @@ function cancelCounter(){
 	$(".attach-files").hide();
 	$("#default-buttons").show();
 	$("#counter-buttons").hide();
+	$(".edit").hide();
+	$(".display").show();
 }
 </script>
 

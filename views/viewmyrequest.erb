@@ -32,7 +32,7 @@
 <div class="container" id="header">
 	<h1><a href="index.html">nteract.</a></h1>
 	<div class="fr mt">
-		Welcome Dan  |  <a href="#">Logout</a>
+		<%= "Welcome #{@@myrequest_hsh["requester_firstname"]}  |  <a href=\"#\">Logout</a>" %>
 	</div>
 </div>
 <div class="container">
@@ -108,15 +108,13 @@
 				<div class="span-12 last">
 					<div class="display">
 						<% timediff1 = ((@@myrequest_hsh["date"] - Time.now)/(60*60*24)).round %>
-						<%= "#{@@weekday_arr[@@myrequest_hsh["date"].wday]}  #{@@month_long_arr[@@myrequest_hsh["date"].month]} #{@@myrequest_hsh["date"].mday}, #{@@myrequest_hsh["date"].year}  #{@@myrequest_hsh["date"].hour}:#{@@myrequest_hsh["date"].min} CST <strong class=\"red\">#{timediff1} Days</strong>" %>
+						<%= "#{@@myrequest_hsh["date"].strftime("%A %B %d, %Y %X CST")} <strong class=\"red\">#{timediff1} Days</strong>" %>
 					</div>
 					<div class="hide edit">
 						<input type="text" name="due-date" id="due-date" class="text span-4 last"/>
 					</div>
 				</div>
-			</div>
-	
-	
+			</div>		
 
 			<div class="clear clearfix mt tooltip" id="request-conditions">
 				<div class="span-4">

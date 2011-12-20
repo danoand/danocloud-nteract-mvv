@@ -5,6 +5,10 @@ configure do
   load 'setupdata.rb'
 end
 
+before '/' do 
+  load 'setuptimedata.rb'
+end
+
 get '/' do
   File.read(File.join('public', 'home.html'))
 end
@@ -27,6 +31,10 @@ end
 
 get '/counterrequestemail' do
   erb :counterrequestemail
+end
+
+get '/viewrequestreceiveredited' do
+  erb :viewrequestreceiveredited
 end
 
 post '/dashboard' do

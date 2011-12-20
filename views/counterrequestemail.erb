@@ -8,13 +8,13 @@
 	<div style="height:517px; width:647px; display:block; margin:0 auto; background:url('../images/email/email-bg.jpg'); font-family:arial; font-size:12px;">
 		<div style="padding:30px 33px">
 			<h1 style="color:#FFFFFF; float:left; font-family:times; font-size:40px; height:60px; margin:0 0 20px 0; font-weight:normal">nteract.</h1>
-			<%= "<h2 style=\"clear:both; color:#3a739d; font-weight:normal; font-size:20px; margin-bottom:0px\">Charles G. countered your request: &quot;#{@@myrequest_hsh["title"]}&quot;</h2>" %>
-			<h4 style="margin-top:5px;">Charles is requesting a change in the details of your request</h4>
+			<%= "<h2 style=\"clear:both; color:#3a739d; font-weight:normal; font-size:20px; margin-bottom:0px\">#{@@myrequest_hsh["receiver_firstname"]} countered your request: &quot;#{@@myrequest_hsh["title"]}&quot;</h2>" %>
+			<%= "<h4 style=\"margin-top:5px;\">#{@@myrequest_hsh["receiver_firstname"]} is requesting a change in the details of your request</h4>" %>
 			<%= "<p><em style=\"color:#7e7e7e\">#{@@myrequest_hsh["comments_countered"]}</em> </p>" %>
 			<p style="text-align:right; color:#7e7e7e">-Charles Gonderson <small><em>nteract, Inc.</em></small></p>
 			<p style="font-size:14px; text-align:center"><strong>Charles Countered: </strong><span style="color:#3a739d">Due Date</span></p>
 			<p style="text-align:center; margin-top:40px">
-				<strong>Click here to view:</strong> <a href="../view-request-receiver-edited.html">http://nteract.com/asd879hsdf89sdfhs9dfh</a><br/>
+				<strong>Click here to view:</strong> <a href="/viewrequestreceiveredited">http://nteract.com/asd879hsdf89sdfhs9dfh</a><br/>
 				<small style="color:#7e7e7e">If clicking the link doesn't work copy and paste it in your browser window</small>
 			</p>
 	
