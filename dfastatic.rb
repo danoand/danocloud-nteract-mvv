@@ -37,6 +37,10 @@ get '/viewrequestreceiveredited' do
   erb :viewrequestreceiveredited
 end
 
+get '/dashboard' do
+  erb :dashboard
+end
+
 post '/dashboard' do
   erb :dashboard
 end
