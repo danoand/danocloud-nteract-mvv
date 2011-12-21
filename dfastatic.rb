@@ -18,6 +18,20 @@ get '/login.html' do
 end
 
 get '/viewmyrequest' do
+  
+  def post_message
+    RestClient.post "https://api:key-08e7ad62d29c89e267xbbfgv8zu24nx4"\
+    "@api.mailgun.net/v2",
+    :from => "Dan Yahoo <danandersonmobile@yahoo.com>",
+    :to => "danfanderson@gmail.com",
+    :subject => "Did This Work?",
+    :text => "Dude, did this work?"
+  end
+  
+  puts "Firing off the email message..."
+  puts "Inspecting the response yields: #{post_message.inpsect}"
+  puts "Completed firing off the email message..."
+  
   erb :viewmyrequest
 end
 
@@ -44,4 +58,3 @@ end
 post '/dashboard' do
   erb :dashboard
 end
-
