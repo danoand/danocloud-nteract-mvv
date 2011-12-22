@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'rest-client'
 
 configure do
   load 'setupdata.rb'
@@ -29,7 +30,7 @@ get '/viewmyrequest' do
   end
   
   puts "Firing off the email message..."
-  puts "Inspecting the response yields: #{post_message.inpsect}"
+  puts "Inspecting the response yields: #{post_message}"
   puts "Completed firing off the email message..."
   
   erb :viewmyrequest
