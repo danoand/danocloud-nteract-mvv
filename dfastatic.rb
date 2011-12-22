@@ -21,11 +21,11 @@ get '/viewmyrequest' do
   
   def post_message
     RestClient.post "https://api:key-08e7ad62d29c89e267xbbfgv8zu24nx4"\
-    "@api.mailgun.net/v2",
-    :from => "Dan Yahoo <danandersonmobile@yahoo.com>",
+    "@api.mailgun.net/v2/nteract.mailgun.org/messages",
+    :from => "postmaster@nteract.mailgun.org",
     :to => "danfanderson@gmail.com",
     :subject => "Did This Work?",
-    :text => "Dude, did this work?"
+    :text => "Dude, did this work? Sending from my Sinatra app."
   end
   
   puts "Firing off the email message..."
