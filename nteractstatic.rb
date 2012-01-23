@@ -15,12 +15,10 @@ get '/' do
   File.read(File.join('public', 'home.html'))
 end
 
-get '/login.html' do
-  File.read(File.join('public', 'login.html'))
-end
-
 get '/viewmyrequest' do
   
+# Intended to be a method which uses a service to send an email when a request is created
+# This may be tied to my heroku account
   def post_message
     RestClient.post "https://api:key-8htb17qqgo-8h5mddaqdf3q1g6vxup70"\
     "@api.mailgun.net/v2/app2186986.mailgun.org/messages",
@@ -30,9 +28,9 @@ get '/viewmyrequest' do
     :text => "Dude, did this work? Sending from my Sinatra app."
   end
   
-  puts "Firing off the email message..."
-  puts "Inspecting the response yields: #{post_message}"
-  puts "Completed firing off the email message..."
+#  puts "Firing off the email message..."
+#  puts "Inspecting the response yields: #{post_message}"
+#  puts "Completed firing off the email message..."
   
   erb :viewmyrequest
 end
@@ -57,6 +55,11 @@ get '/dashboard' do
   erb :dashboard
 end
 
+# this handler will process the post that occurs after the janrain login
 post '/dashboard' do
   erb :dashboard
+end
+
+get '/login.html' do
+  File.read(File.join('public', 'login.html'))
 end
